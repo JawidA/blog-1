@@ -35,12 +35,17 @@ function Dashboard() {
         <div className="container p-2 lg:px-24 mx-auto -mt-30 sm:-mt-20">
           <div className="bg-neutral-100 p-5 rounded-md">
             <div className="bg-neutral-200 flex justify-center gap-5 rounded-md p-2">
-              <p className="px-7 max-sm:w-[45%] text-center py-2 text-xl rounded-md text-white bg-blue-400">
-                <Link to={"/dashboard/add"}>Add</Link>
-              </p>
-              <p className="px-7 max-sm:w-[45%] text-center py-2 text-xl rounded-md text-white bg-blue-400">
-                <Link to={"/dashboard/list"}>List</Link>
-              </p>
+              <Link to={"/dashboard/add"} className="max-sm:w-[45%]">
+                <p className="px-7  text-center py-2 text-xl rounded-md text-white bg-blue-400">
+                  Add
+                </p>
+              </Link>
+
+              <Link to={"/dashboard/list"} className="max-sm:w-[45%]">
+                <p className="px-7 text-center py-2 text-xl rounded-md text-white bg-blue-400">
+                  List
+                </p>
+              </Link>
             </div>
 
             <Outlet />

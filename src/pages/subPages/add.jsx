@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
+import supabase from "../../SupabaseClient";
 
 function add() {
   const [userImageURL, setUserImageURL] = useState("");
@@ -15,6 +16,8 @@ function add() {
 
   const [content, setContent] = useState("");
 
+  const [error, setError] = useState(null);
+
   const handleAddURL = (e) => {
     e.preventDefault();
     if (singleBlogImage.length > 5) {
@@ -23,8 +26,27 @@ function add() {
     }
   };
 
-  const handlePostBlog = (e) => {
+  const handlePostBlog = async (e) => {
     e.preventDefault();
+
+    const { data, error } = await supabase.from("BlogPosts").insert({
+      user_name: userName,
+      profile_image: userImageURL,
+      title: title,
+      slug: slug,
+      category: category,
+      blog_images: blogImages,
+      blog_content: content,
+    });
+
+    if (error) {
+      setError(error.message);
+      console.log(error);
+    }
+    if (data) {
+      console.log("data added: ");
+      console.log(data);
+    }
 
     console.log("Username: ", userName);
     console.log("Profile image: ", userImageURL);
@@ -94,11 +116,24 @@ function add() {
 
           <div className="bg-neutral-200 flex flex-wrap items-center px-4 py-2 text-lg text-neutral-600 font-semibold rounded-md">
             <label htmlFor="cars">Select the Category :</label>
-            <select className="bg-neutral-100 rounded-md p-2 max-sm:mt-2 max-sm:w-full sm:ml-10 w-70" name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
-                <option className="text-xl" value="ai">AI</option>
-                <option className="text-xl" value="health">Health</option>
-                <option className="text-xl" value="technology">Technology</option>
-                <option className="text-xl" value="other">Other</option>
+            <select
+              className="bg-neutral-100 rounded-md p-2 max-sm:mt-2 max-sm:w-full sm:ml-10 w-70"
+              name="category"
+              id="category"
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option className="text-xl" value="ai">
+                AI
+              </option>
+              <option className="text-xl" value="health">
+                Health
+              </option>
+              <option className="text-xl" value="technology">
+                Technology
+              </option>
+              <option className="text-xl" value="other">
+                Other
+              </option>
             </select>
           </div>
 
