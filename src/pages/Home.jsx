@@ -7,7 +7,7 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await supabase.from("BlogPosts").select();
+      const { data, error } = await supabase.from("BlogPosts").select().limit(15);
 
       if (error) {
         setError(error.message);

@@ -22,7 +22,7 @@ function Navbar() {
       <nav className=" py-4 container p-2 lg:px-24 mx-auto flex justify-between items-center relative">
         <div>
           <h1 className="text-white text-3xl sm:text-4xl font-bold uppercase">
-            useful
+            <Link to={'/'}>useful</Link>
           </h1>
         </div>
         <div className="max-sm:hidden">
