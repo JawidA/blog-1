@@ -39,16 +39,16 @@ function List() {
   console.log(blogList);
 
   return (
-    <div className="mt-5 rounded-md overflow-hidden">
-      <div className="bg-neutral-200 p-4 flex flex-col gap-4">
+    <div className="mt-4 rounded-md overflow-hidden">
+      <div className="bg-neutral-200 p-2 flex flex-col gap-2">
         {blogList &&
           blogList.map((item) => (
-            <div className="bg-neutral-100 flex flex-col-reverse gap-3 sm:flex-row sm:p-4 justify-between p-2 rounded-md overflow-hidden">
-              <div className="sm:w-3/4">
+            <div className="bg-neutral-100 flex flex-col-reverse gap-3 md:flex-row md:p-4 justify-between p-2 rounded-md overflow-hidden">
+              <div className="sm:w-3/4 px-2">
                 <div className="flex gap-1 text-neutral-500">
                   <p>{item.user_name} -</p>
                   <p>
-                    {new Date(item.created_at).getDay()}{" "}
+                    {new Date(item.created_at).getDate()}{" "}
                     {months[new Date(item.created_at).getMonth()]}
                   </p>
                 </div>
@@ -66,7 +66,7 @@ function List() {
                   </button>
                 </div>
               </div>
-              <div className="rounded-md overflow-hidden max-sm:flex-1 h-auto sm:w-1/4">
+              <div className="rounded-md overflow-hidden max-md:flex-1 h-auto md:w-1/4">
                 <img
                   className="w-full h-full object-cover object-top"
                   src={item.blog_images[0]}

@@ -48,20 +48,13 @@ function add() {
       console.log(data);
     }
 
-    console.log("Username: ", userName);
-    console.log("Profile image: ", userImageURL);
-    console.log("Category: ", category);
-    console.log("title: ", title);
-    console.log("slug: ", slug);
-    console.log("Image array: ", blogImages);
-    console.log("Content: ", content);
-
     setUserName("");
     setUserImageURL("");
     setTitle("");
     setSlug("");
     setSingleBlogImage("");
     setBlogImages([]);
+    setContent('')
   };
 
   const modules = {
@@ -94,6 +87,7 @@ function add() {
 
   return (
     <div>
+      {error && <div className="text-2xl text-center font-bold bg-red-400 p-5"><h1>{error}</h1></div>}
       <div>
         <form className="flex flex-col gap-3 mt-9">
           <h1 className="text-2xl font-bold">Profile Info: </h1>

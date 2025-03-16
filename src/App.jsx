@@ -11,6 +11,7 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import List from "./pages/subPages/List";
 import Add from "./pages/subPages/add";
+import Edit from "./pages/subPages/Edit";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard/add" element={<Add/>} />
           <Route path="/dashboard/list" element={<List/>} />
+          <Route path="/dashboard/edit" element={<Edit/>} />
         </Route>
       </Routes>
     </>
