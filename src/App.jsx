@@ -30,8 +30,10 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="/dashboard/add" element={<Add />} />
+          <Route path="/dashboard/" element={<List />} />
           <Route path="/dashboard/list" element={<List />} />
           <Route path="/dashboard/edit" element={<Edit />} />
+          <Route path="/dashboard/edit/:id" element={<Edit />} />
         </Route>
         <Route path="/:id" element={<SinglePost />} />
       </Routes>

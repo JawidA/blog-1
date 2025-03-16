@@ -3,6 +3,7 @@ import supabase from "../SupabaseClient";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
+import './SinglePost.css'
 
 function SinglePost() {
   const { id } = useParams();
@@ -99,8 +100,9 @@ function SinglePost() {
           <div className="w-full h-1 mt-1  bg-neutral-200"></div>
         </div>
 
-        <div className="font-semibold text-neutral-600">
+        <div className="the-div font-semibold text-neutral-600">
           {parse(`${data?.blog_content}`)}
+          <p className="text-blue-400 underline italic"><a href="https://amcoqualitypainting.com/">Our Sponsor</a></p>
         </div>
       </div>
 

@@ -18,9 +18,9 @@ function Dashboard() {
     }
   };
 
-  //   useEffect(() => {
-  //     if (!session?.user) navigate("/signin");
-  //   }, [session]);
+    useEffect(() => {
+      if (!session?.user) navigate("/signin");
+    }, [session]);
 
   return (
     <div>
