@@ -25,25 +25,26 @@ function List() {
       const { data, error } = await supabase.from("BlogPosts").select();
 
       if (error) {
-        console.log(error);
-        setError(error);
+        setError(error.message);
       } else {
         setBlogList(data);
         setError(null);
-        console.log(data);
       }
     };
     fetchData();
   }, []);
 
-  console.log(blogList);
-
   return (
     <div className="mt-4 rounded-md overflow-hidden">
+      {error && (
+        <h1 className="bg-red-400 rounded-md font-bold text-2xl text-center p-5">
+          {error}
+        </h1>
+      )}
       <div className="bg-neutral-200 p-2 flex flex-col gap-2">
         {blogList &&
           blogList.map((item) => (
-            <div className="bg-neutral-100 flex flex-col-reverse gap-3 md:flex-row md:p-4 justify-between p-2 rounded-md overflow-hidden">
+            <div key={item.id} className="bg-neutral-100 flex flex-col-reverse gap-3 md:flex-row md:p-4 justify-between p-2 rounded-md overflow-hidden">
               <div className="sm:w-3/4 px-2">
                 <div className="flex gap-1 text-neutral-500">
                   <p>{item.user_name} -</p>
@@ -52,8 +53,12 @@ function List() {
                     {months[new Date(item.created_at).getMonth()]}
                   </p>
                 </div>
-                <h1 className="text-3xl font-bold mt-2 capitalize">{item.title}</h1>
-                <h2 className="text-xl font-semibold text-neutral-600 mt-1">{item.slug}</h2>
+                <h1 className="text-3xl font-bold mt-2 capitalize">
+                  {item.title}
+                </h1>
+                <h2 className="text-xl font-semibold text-neutral-600 mt-1">
+                  {item.slug}
+                </h2>
                 <div className="flex gap-2 my-2">
                   <p className="bg-neutral-200 rounded-full py-2 px-4 uppercase w-fit mt-2">
                     {item.category}

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import supabase from "../SupabaseClient";
 import AboutCard from "../components/AboutCard";
+import { Link } from "react-router-dom";
 
 function AI() {
   const [data, setData] = useState([]);
@@ -51,42 +52,44 @@ function AI() {
         )}
         {data &&
           data.map((item) => (
-            <div
-              key={item.id}
-              className="flex bg-neutral-200 rounded-md p-3 gap-2 "
-            >
-              <div className="w-2/3 flex flex-col gap-3">
-                <h1 className="text-xl font-bold capitalize">{item.title}</h1>
-                <h2 className="text-neutral-800 hidden md:block">
-                  {item.slug}
-                </h2>
-                <div className="flex gap-3 items-center">
-                  <img
-                    className="w-8 h-8 rounded-full object-cover object-top"
-                    src={item.profile_image}
-                    alt="Profile image"
-                  />
-                  <div className="flex text-neutral-600 gap-3">
-                    <p>{item.user_name}</p>
-                    <p>
-                      {new Date(item.created_at).getDate()}{" "}
-                      {months[new Date(item.created_at).getMonth()]}
-                    </p>
+            <Link to={"/" + item.id} key={item.id}>
+              <div
+                
+                className="flex bg-neutral-100 rounded-md p-3 gap-2 "
+              >
+                <div className="w-2/3 flex flex-col gap-3">
+                  <h1 className="text-xl font-bold capitalize">{item.title}</h1>
+                  <h2 className="text-neutral-800 hidden md:block">
+                    {item.slug}
+                  </h2>
+                  <div className="flex gap-3 items-center">
+                    <img
+                      className="w-8 h-8 rounded-full object-cover object-top"
+                      src={item.profile_image}
+                      alt="Profile image"
+                    />
+                    <div className="flex text-neutral-600 gap-3">
+                      <p>{item.user_name}</p>
+                      <p>
+                        {new Date(item.created_at).getDate()}{" "}
+                        {months[new Date(item.created_at).getMonth()]}
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div className="w-1/3 h-auto rounded-md overflow-hidden">
+                  <img
+                    className="h-full w-full object-cover"
+                    src={item.blog_images[0]}
+                    alt=""
+                  />
+                </div>
               </div>
-              <div className="w-1/3 h-auto rounded-md overflow-hidden">
-                <img
-                  className="h-full w-full object-cover"
-                  src={item.blog_images[0]}
-                  alt=""
-                />
-              </div>
-            </div>
+            </Link>
           ))}
       </div>
 
-      <div className="hidden sticky top-10 h-fit lg:flex flex-col items-center w-1/4 bg-neutral-200 p-4 m-2 rounded-md">
+      <div className="hidden sticky top-10 h-fit lg:flex flex-col items-center w-1/4 bg-neutral-100 p-4 m-2 rounded-md">
         <AboutCard />
       </div>
     </div>

@@ -9,7 +9,7 @@ function Nav() {
       <Link to={'/health'} className="max-sm:w-full">Health</Link>
       <Link to={'/technology'} className="max-sm:w-full">Technology</Link>
       <Link to={'/other'} className="max-sm:w-full">Other</Link>
-      <Link to={'/about'} className="max-sm:w-full">About</Link>
+      {/* <Link to={'/about'} className="max-sm:w-full">About</Link> */}
     </div>
   );
 }

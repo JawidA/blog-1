@@ -15,7 +15,6 @@ function add() {
   const [blogImages, setBlogImages] = useState([]);
 
   const [content, setContent] = useState("");
-
   const [error, setError] = useState(null);
 
   const handleAddURL = (e) => {
@@ -41,10 +40,8 @@ function add() {
 
     if (error) {
       setError(error.message);
-      console.log(error);
     }
     if (data) {
-      console.log("data added: ");
       console.log(data);
     }
 

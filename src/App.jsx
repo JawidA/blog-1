@@ -12,24 +12,28 @@ import Dashboard from "./pages/Dashboard";
 import List from "./pages/subPages/List";
 import Add from "./pages/subPages/add";
 import Edit from "./pages/subPages/Edit";
+import SinglePost from "./pages/SinglePost";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <>
       <Navbar />
+        <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/ai" element={<AI />} />
         <Route path="/health" element={<Health />} />
         <Route path="/other" element={<Other />} />
         <Route path="/technology" element={<Technology />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="/dashboard/add" element={<Add/>} />
-          <Route path="/dashboard/list" element={<List/>} />
-          <Route path="/dashboard/edit" element={<Edit/>} />
+          <Route path="/dashboard/add" element={<Add />} />
+          <Route path="/dashboard/list" element={<List />} />
+          <Route path="/dashboard/edit" element={<Edit />} />
         </Route>
+        <Route path="/:id" element={<SinglePost />} />
       </Routes>
     </>
   );
