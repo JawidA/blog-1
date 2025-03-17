@@ -145,8 +145,10 @@ function SinglePost() {
           ))}
       </div>
       <p className="text-blue-400 underline text-center text-xl opacity-100 ">
-                  <a target="_blank" href="https://amcoqualitypainting.com/">Our Sponsor: AMCO Quality Painting</a>
-                </p>
+        <a target="_blank" href="https://amcoqualitypainting.com/">
+          Our Sponsor: AMCO Quality Painting
+        </a>
+      </p>
     </div>
   );
 }
