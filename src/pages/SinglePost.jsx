@@ -140,18 +140,13 @@ function SinglePost() {
                     {item.slug.substr(0, 80)}...
                   </h2>
                 </div>
-                <p className="text-blue-400 underline italic opacity-0 ">
-                  <a href="https://amcoqualitypainting.com/">Our Sponsor</a>
-                </p>
               </div>
             </Link>
           ))}
       </div>
-      <p className="text-blue-400 underline text-center  opacity-100 ">
-        <a href="https://amcoqualitypainting.com/">
-          Our Sponsor: AMCO Quality Painting
-        </a>
-      </p>
+      <p className="text-blue-400 underline text-center text-xl opacity-100 ">
+                  <a target="_blank" href="https://amcoqualitypainting.com/">Our Sponsor: AMCO Quality Painting</a>
+                </p>
     </div>
   );
 }
