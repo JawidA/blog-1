@@ -3,7 +3,7 @@ import supabase from "../SupabaseClient";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
-import './SinglePost.css'
+import "./SinglePost.css";
 
 function SinglePost() {
   const { id } = useParams();
@@ -102,13 +102,15 @@ function SinglePost() {
 
         <div className="the-div font-semibold text-neutral-600">
           {parse(`${data?.blog_content}`)}
-          <p className="text-blue-400 underline italic"><a href="https://amcoqualitypainting.com/">Our Sponsor</a></p>
+          <p className="text-blue-400 underline italic p-5 opacity-0">
+            <a href="https://amcoqualitypainting.com/">Our Sponsor</a>
+          </p>
         </div>
       </div>
 
       <div className="my-4 mb-5">
         <div className="w-full h-1 bg-neutral-200"></div>
-        <div className="w-full h-1 mt-1  bg-neutral-200"></div>
+        <div className="w-full h-1 mt-1 bg-neutral-200"></div>
       </div>
 
       <h1 className="text-3xl font-bold capitalize mt-10">
@@ -138,10 +140,18 @@ function SinglePost() {
                     {item.slug.substr(0, 80)}...
                   </h2>
                 </div>
+                <p className="text-blue-400 underline italic opacity-0 ">
+                  <a href="https://amcoqualitypainting.com/">Our Sponsor</a>
+                </p>
               </div>
             </Link>
           ))}
       </div>
+      <p className="text-blue-400 underline text-center  opacity-100 ">
+        <a href="https://amcoqualitypainting.com/">
+          Our Sponsor: AMCO Quality Painting
+        </a>
+      </p>
     </div>
   );
 }

@@ -41,7 +41,7 @@ function Home() {
   ];
 
   return (
-    <div className="container lg:px-36 m-auto flex justify-between lg:pt-10">
+    <div className="container lg:px-26 m-auto flex justify-between lg:pt-10">
       <div className="flex flex-col gap-3 p-2 lg:w-3/4">
         {error && (
           <h1 className="bg-red-400 rounded-md font-bold text-2xl text-center p-5">
@@ -68,6 +68,11 @@ function Home() {
                       <p>
                         {new Date(item.created_at).getDate()}{" "}
                         {months[new Date(item.created_at).getMonth()]}
+                      </p>
+                      <p className="text-blue-400 underline text-center  max-sm:hidden opacity-0 ">
+                        <a href="https://amcoqualitypainting.com/">
+                          Our Sponsor: AMCO Quality Painting
+                        </a>
                       </p>
                     </div>
                   </div>

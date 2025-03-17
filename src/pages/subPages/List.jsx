@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 function List() {
   const [blogList, setBlogList] = useState("");
   const [error, setError] = useState(null);
+  const [pageState, setPageState] = useState();
 
   const months = [
     "January",
@@ -33,11 +34,18 @@ function List() {
       }
     };
     fetchData();
-  }, []);
+  }, [pageState]);
 
+  const handleDelete = async (e) => {
+    const { data, error } = await supabase
+      .from("BlogPosts")
+      .delete()
+      .eq("id", e)
+      .select();
 
-  
-
+    if (error) setError(error.message);
+    else setPageState(data);
+  };
 
   return (
     <div className="mt-4 rounded-md overflow-hidden">
@@ -72,9 +80,14 @@ function List() {
                     {item.category}
                   </p>
                   <button className="bg-green-300 cursor-pointer rounded-full py-2 px-4 capitalize w-fit mt-2">
-                    <Link to={'/dashboard/edit/'+item.id}>Edit</Link>
+                    <Link to={"/dashboard/edit/" + item.id}>Edit</Link>
                   </button>
-                  <button className="bg-red-300 cursor-pointer rounded-full py-2 px-4 capitalize w-fit mt-2">
+                  <button
+                    onClick={() => {
+                      handleDelete(item.id);
+                    }}
+                    className="bg-red-300 cursor-pointer rounded-full py-2 px-4 capitalize w-fit mt-2"
+                  >
                     Delete
                   </button>
                 </div>
